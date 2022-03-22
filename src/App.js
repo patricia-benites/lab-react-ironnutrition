@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import { AddFoodForm } from './components/AddFoodForm/AddFoodForm';
 import { FoodBox } from './components/FoodBox/FoodBox';
 
 const inputFoods = require('./foods.json');
@@ -9,16 +10,11 @@ function App() {
   return (
     <div className="App">
       <h1>Food List</h1>
+      <AddFoodForm setFoods={setFoods}/>
       {foods.map((food) => {
         return (
           <div key={food.name}>
-            <FoodBox key={food.name}
-              food={{
-                name: 'Orange',
-                calories: 85,
-                image: 'https://i.imgur.com/abKGOcv.jpg',
-                servings: 1,
-              }}
+            <FoodBox food={food}
             />
           </div>
         );
